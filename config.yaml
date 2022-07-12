@@ -15,10 +15,10 @@ train_args:
     entropy_regularization: 1.3e-3
     monte_carlo_rate: 1.0
     update_episodes: 400
-    batch_size: 4
-    minimum_episodes: 4
-    maximum_episodes: 300000
-    num_batchers: 2
+    batch_size: 192
+    minimum_episodes: 400
+    maximum_episodes: 30000
+    num_batchers: 24
     eval_rate: 0.1
     replay_rate: 0  # 0.1
     supervised_weight: 0  # 0.1

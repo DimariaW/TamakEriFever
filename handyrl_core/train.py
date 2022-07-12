@@ -368,8 +368,9 @@ class Batcher:
         print('started batcher %d' % bid)
         while not self.shutdown_flag:
             episodes = conn.recv()
+            beg = time.time()
             batch = make_batch(episodes, self.args)
-            time.sleep(0.1)
+            time.sleep(max(0.01, 0.1 - time.time() + beg))
             conn.send((batch, 1))
         print('finished batcher %d' % bid)
 
