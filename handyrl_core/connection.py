@@ -225,8 +225,8 @@ class QueueCommunicator:
             self.add(conn)
         self.shutdown_flag = False
         self.threads = [
-            threading.Thread(target=self._send_thread),
-            threading.Thread(target=self._recv_thread),
+            threading.Thread(target=self._send_thread, daemon=True),
+            threading.Thread(target=self._recv_thread, daemon=True),
         ]
         for thread in self.threads:
             thread.start()

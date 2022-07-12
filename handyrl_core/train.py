@@ -791,10 +791,10 @@ class Learner:
     def run(self):
         try:
             # open threads
-            self.threads = [threading.Thread(target=self.trainer.run)]
+            self.threads = [threading.Thread(target=self.trainer.run, daemon=True)]
             #self.threads = []
             if self.args['remote']:
-                self.threads.append(threading.Thread(target=self.entry_server))
+                self.threads.append(threading.Thread(target=self.entry_server, daemon=True))
             for thread in self.threads:
                 thread.start()
             # open generator, evaluator
