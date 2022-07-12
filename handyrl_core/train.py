@@ -36,7 +36,7 @@ from .worker import Workers
 
 
 sw = SummaryWriter("./log/vs_easy_builtin_ai/")
-device = torch.device("cpu")
+device = torch.device("cuda:3")
 
 
 def make_batch(episodes, args):
@@ -822,5 +822,5 @@ def train_server_main(args):
     env_args = args['env_args']
     train_args['env'] = env_args
 
-    learner = Learner(train_args, device=torch.device("cpu"))
+    learner = Learner(train_args, device=torch.device("cuda:3"))
     learner.run()

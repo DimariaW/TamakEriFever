@@ -154,7 +154,7 @@ class MultiProcessWorkers:
 
         for i in range(num):
             conn0, conn1 = mp.Pipe(duplex=True)
-            mp.Process(target=func, args=(conn1, i)).start()
+            mp.Process(daemon=True, target=func, args=(conn1, i)).start()
             conn1.close()
             self.conns.append(conn0)
             self.send_cnt[conn0] = 0
